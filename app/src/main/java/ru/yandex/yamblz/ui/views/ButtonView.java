@@ -82,7 +82,6 @@ public class ButtonView extends LinearLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        Log.w("view", "open" + getId());
         left.setImageDrawable(new BitmapDrawable(getResources(), drawCircle(getHeight(), getHeight() / 2)));
         right.setImageDrawable(new BitmapDrawable(getResources(), drawCircle(0, getHeight() / 2)));
         txt.setBackgroundColor(background.getColor());
@@ -100,10 +99,7 @@ public class ButtonView extends LinearLayout {
         animator.start();
     }
 
-
-//    @OnClick
     public Animator closeButton() {
-        Log.w("view", "close" + getId());
         AnimatorSet animator;
         animator = new AnimatorSet();
         animator.playTogether(
@@ -119,7 +115,6 @@ public class ButtonView extends LinearLayout {
         fade.playTogether(ObjectAnimator.ofFloat(this, "alpha", 1f, 0f));
         AnimatorSet finish = new AnimatorSet();
         finish.playSequentially(animator, fade);
-//        finish.start();
         return finish;
     }
 
